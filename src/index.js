@@ -26,7 +26,7 @@ function totalHits(total){
 }
 
 function onFormSubmit(event) {
-  API.params.page = 2;
+  API.params.page = 1;
   API.params.q = event.currentTarget.elements.searchQuery.value;
   refs.gallery.innerHTML = "";
   event.preventDefault();
@@ -41,7 +41,6 @@ function onFormSubmit(event) {
 
 function onObserver(entries) {
   entries.forEach(entry => {
-    console.log(entry.intersectionRatio && API.params.q !== "");
     if (entry.intersectionRatio && API.params.q !== "") {
       loadMore();
     }
