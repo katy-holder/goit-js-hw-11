@@ -1,0 +1,1 @@
+{"version":3,"sources":["reset.css"],"names":[],"mappings":"AAUA,uBAHI,QAMJ,CAHA,GACI,SAEJ","file":"reset.0dbdefd0.css","sourceRoot":"../src","sourcesContent":["h1,\nh2,\nh3,\nh4,\nh5,\nh6,\np {\n    margin: 0;\n}\n\nul {\n    padding: 0;\n    margin: 0;\n}"]}
