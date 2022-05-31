@@ -5,10 +5,9 @@ import refs from "./js/refs";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import SimpleLightbox from "simplelightbox";
 import generateImg from "./js/generateImg";
-// import preloader from "./templates/preloader";
 
 
-let lightbox = null;
+let lightbox = new SimpleLightbox('.gallery a');
 
 refs.searchForm.addEventListener("submit", onFormSubmit);
 
@@ -16,7 +15,7 @@ async function generateMarkup() {
     const result = await API.getImages();
     const images = result?.data?.hits;
     generateImg(images);
-    lightbox = new SimpleLightbox('.gallery a');
+    lightbox.refresh();
 }
 
 function totalHits(total){
@@ -48,11 +47,7 @@ function onObserver(entries) {
 }
 
 async function loadMore(){
-    lightbox.refresh();
     API.params.page += 1;
-    setTimeout(()=>{
-      generateMarkup()}, 1000 );
-  
 }
 
 const options = {

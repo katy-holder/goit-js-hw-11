@@ -7,7 +7,6 @@ const instance = axios.create({
 });
 
 const params = {
-  key: API_KEY,
   q: "",
   image_type: 'photo',
   orientation : 'horizontal',
@@ -18,7 +17,7 @@ const params = {
 
 async function getImages() {
   try {
-    return await instance.get(``, {params});
+    return await instance.get(``, {params: {...params, key: API_KEY}});
   } catch (error) {
     console.log(error);
   }  

@@ -47,7 +47,6 @@ input {
   padding: 5px;
 }
 
-
 input::placeholder{
   color: rgb(215, 25, 158);
 }
@@ -67,4 +66,20 @@ button {
   display: flex;
   align-items: center;
   padding: 5px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+svg{
+  width: 100px;
+  height: 100px;
+  display:inline-block;
+}
+
+.photo-card{
+  margin-bottom: 20px;
 }
