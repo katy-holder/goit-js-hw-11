@@ -5,7 +5,7 @@ import refs from "./js/refs";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import SimpleLightbox from "simplelightbox";
 import generateImg from "./js/generateImg";
-import preloader from "./templates/preloader";
+// import preloader from "./templates/preloader";
 
 
 let lightbox = null;
@@ -26,7 +26,7 @@ function totalHits(total){
 }
 
 function onFormSubmit(event) {
-  API.params.page = 1;
+  API.params.page = 2;
   API.params.q = event.currentTarget.elements.searchQuery.value;
   refs.gallery.innerHTML = "";
   event.preventDefault();
