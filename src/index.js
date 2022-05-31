@@ -50,7 +50,6 @@ function onObserver(entries) {
 
 async function loadMore(){
     lightbox.refresh();
-    refs.preloader.innerHTML = preloader();
     API.params.page += 1;
     setTimeout(()=>{
       generateMarkup()}, 1000 );
