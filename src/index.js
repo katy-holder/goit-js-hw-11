@@ -11,9 +11,7 @@ let lightbox = new SimpleLightbox('.gallery a');
 
 refs.searchForm.addEventListener("submit", onFormSubmit);
 
-async function generateMarkup() {
-    const result = await API.getImages();
-    const images = result?.data?.hits;
+function generateMarkup(images) {
     generateImg(images);
     lightbox.refresh();
 }
@@ -24,18 +22,18 @@ function totalHits(total){
   }
 }
 
-function onFormSubmit(event) {
+async function onFormSubmit(event) {
   API.params.page = 1;
   API.params.q = event.currentTarget.elements.searchQuery.value;
   refs.gallery.innerHTML = "";
   event.preventDefault();
-  generateMarkup();
-  API.getImages().then(({data} = {}) => {
-    if (data?.total === 0) {
+  const result = await API.getImages();
+    if (result?.data?.total === 0) {
       Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
       return;
     }
-    totalHits(data?.total)});
+    totalHits(result?.data?.total);
+    generateMarkup(result?.data?.hits)
 }
 
 function onObserver(entries) {
@@ -47,7 +45,10 @@ function onObserver(entries) {
 }
 
 async function loadMore(){
+  lightbox.refresh();
+  const result = await API.getImages();
     API.params.page += 1;
+    generateMarkup(result?.data?.hits);
 }
 
 const options = {
