@@ -46,9 +46,9 @@ function onObserver(entries) {
 
 async function loadMore(){
   lightbox.refresh();
+  API.params.page += 1;
   const result = await API.getImages();
-    API.params.page += 1;
-    generateMarkup(result?.data?.hits);
+  generateMarkup(result?.data?.hits);
 }
 
 const options = {
